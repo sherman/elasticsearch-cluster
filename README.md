@@ -1,4 +1,4 @@
-# Elasticsearch cluster setup and usage examples
+# Elasticsearch cluster setup
 
 Set of Ansible deployment roles for running a local cluster at your own servers.
 
