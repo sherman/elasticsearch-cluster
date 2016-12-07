@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  sudo: yes
+  vars:
+    username: "elastic"
+  roles:
+    - role: copy-ssh-id #creates ambari user and shares public key across hosts
+    - role: pwdless-ssh #populates /etc/hosts and /etc/ssh/ssh_known_hosts with cluster nodes information
+
+- hosts: elastic
+  sudo: yes
+  vars:
+      cluster_name: searchy
+  roles:
+    - role: common
+    - role: oracle-java
+    - role: elastic

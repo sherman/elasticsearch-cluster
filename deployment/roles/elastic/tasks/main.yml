@@ -1,0 +1,19 @@
+- name: adding Elasticsearch debian repo
+  apt_repository: repo='deb http://packages.elastic.co/elasticsearch/2.x/debian stable main' state=present
+
+- name: adding the key for Elasticsearch repository
+  apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+
+- shell: rm -rf {{ item }}
+  with_items:
+    - /var/lib/elasticsearch/elasticsearch/*
+
+- name: installing Elasticsearch
+  apt: name="elasticsearch=2.1.2" state=present update_cache=yes
+  notify: stop elasticsearch
+
+- name: copying configuration
+  template: src={{ item }} dest=/etc/elasticsearch/
+  with_items:
+    - elasticsearch.yml
+  notify: restart elasticsearch
