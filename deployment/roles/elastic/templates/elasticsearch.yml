@@ -1,3 +1,12 @@
 script.groovy.sandbox.enabled: true
 script.inline: true
 script.indexed: true
+
+network.bind_host: _eth1_
+network.publish_host: _eth1_
+
+node.master: true
+discovery.zen.minimum_master_nodes: 2
+discovery.zen.ping.multicast.enabled: false
+discovery.zen.ping.unicast.hosts: ["192.168.5.101", "192.168.5.102", "192.168.5.103"]
+cloud.node.auto_attributes: true
