@@ -7,7 +7,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 $num_instances = 3
 $instance_name_prefix = "elastic"
-$vm_memory = 2048
+$vm_memory = 512
 $vm_cpus = 1
 $ip_start = "192.168.5"
 $vm_gui = false
